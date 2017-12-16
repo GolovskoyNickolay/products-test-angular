@@ -1,0 +1,13 @@
+.register-wrapper{
+  width: 700px;
+  margin: 10% auto 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.btn-wrapper{
+  text-align: right;
+}
+button{
+  cursor: pointer;
+}

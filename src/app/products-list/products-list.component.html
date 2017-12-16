@@ -1,0 +1,70 @@
+<div>
+  <div class="btns-wrapper btns-top">
+    <button class="btn btn-primary" (click)="open(content,0,true)">Create new product</button>
+    <button (click)="loginService.logout()" class="btn btn-success">Logout</button>
+  </div>
+<hr>
+  <div class="items-wrapper">
+    <h2>Products List</h2>
+    <div class="item-wrapper" *ngFor="let product of products">
+      <div><strong>Name:</strong> {{product.name}}</div>
+      <div><strong>Price:</strong> {{product.price}}</div>
+      <div><strong>Description:</strong> {{product.description}}</div>
+      <div class="btns-wrapper item-btns">
+        <button (click)="getProduct(product.productID);open(content,product.productID,false)" class="btn btn-success">Change product</button>
+        <button (click)="open(remove,product.productID,false)" class="btn btn-danger">Delete product</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Update Product</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="changeProductForm">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input id="name" class="form-control" value="" formControlName="productName" [(ngModel)]="currentProduct.name">
+      </div>
+      <div class="alert alert-danger" [hidden]="changeProductForm.controls['productName'].valid">Shouldn't be emtpy</div>
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input id="price" class="form-control" formControlName="productPrice" [(ngModel)]="currentProduct.price">
+      </div>
+      <div class="alert alert-danger" [hidden]="changeProductForm.controls['productPrice'].valid">Shouldn't be emtpy and only numbers </div>
+      <div>
+        <label for="description">Description:</label>
+        <input id="description" class="form-control" formControlName="productDescription" [(ngModel)]="currentProduct.description">
+      </div>
+      <div class="alert alert-danger" [hidden]="changeProductForm.controls['productDescription'].valid">Shouldn't be emtpy</div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="saveProduct();c('Close click')" [disabled]="!changeProductForm.valid">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #remove let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Are you sure?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      Do you really want to delete this product?
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="deleteProduct();c('Close click')">Delete</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+

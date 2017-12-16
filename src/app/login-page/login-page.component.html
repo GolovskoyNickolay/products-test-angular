@@ -1,0 +1,22 @@
+<div class="register-wrapper">
+  <form [formGroup]="registerForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" class="form-control" value="" formControlName="name" [(ngModel)]="register.name">
+    </div>
+    <div class="alert alert-danger" [hidden]="registerForm.controls['name'].valid">Shouldn't be emtpy</div>
+    <div class="form-group">
+      <label for="price">Password:</label>
+      <input id="price" class="form-control" formControlName="password" [(ngModel)]="register.password">
+    </div>
+    <div class="alert alert-danger" [hidden]="registerForm.controls['password'].valid">Shouldn't be emtpy</div>
+  </form>
+
+  <div class="btn-wrapper">
+    <button class="btn btn-success" [disabled]="!registerForm.valid" (click)="login()">Login</button>
+  </div>
+
+</div>
+
+
+

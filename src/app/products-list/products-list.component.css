@@ -1,0 +1,28 @@
+.btns-wrapper{
+  padding: 20px 20px 0 20px ;
+  display: flex;
+  justify-content: space-between;
+}
+button{
+  cursor: pointer;
+}
+.item-wrapper{
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.items-wrapper{
+  width: 700px;
+  margin: 0 auto;
+}
+.btns-top{
+  width: 1000px;
+  margin: 0 auto;
+}
+.item-btns{
+  padding-bottom: 0;
+}
+h2{
+  margin: 20px 0;
+}
